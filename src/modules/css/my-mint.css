@@ -1,0 +1,24 @@
+.mint-swipe-indicator.is-active{
+  background: #ff6366;
+  opacity: 1;
+}
+.mint-swipe {
+  height: 180px;
+}
+
+.mint-tabbar {
+  background: #fff;
+  color: #999;
+  border-top: 1px solid #e5e5e5;
+}
+
+.mint-tab-item-label {
+  color: #333;
+}
+.mint-tabbar > .mint-tab-item.is-selected {
+  background-color: #fff;
+  color: #ff6366;
+}
+.mint-tabbar > .mint-tab-item.is-selected .mint-tab-item-label{
+  color: #ff6366;
+}
