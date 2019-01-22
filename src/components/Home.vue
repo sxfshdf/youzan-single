@@ -3,7 +3,9 @@
       <div class="container with-bottom-nav" style="min-height: 667px;">
         <div class="content">
           <!--<div class="js-image-swiper custom-image-swiper  custom-image-swiper-single" data-images="1">-->
-            <swipe></swipe>
+          <div class="bannerSwipe">
+            <swipe :lists="bannerList"></swipe>
+          </div>
           <!--</div>-->
           <div class="section-title">优店推荐</div>
           <div class="section-content shops">
@@ -29,7 +31,7 @@
             <ul>
             </ul>
           </div>
-          <HotGoods></HotGoods>
+          <HotGoods :goodsList = "goodsList" @getGoods="getGoods"></HotGoods>
           <div class="js-show-find category-guid" style="display: none;"></div>
         </div>
       </div>
@@ -51,13 +53,54 @@
   import swipe from './Swipe.vue'
   import TabBar from './TabBar.vue'
   import HotGoods from './HotGoods.vue'
+  import url from '../modules/js/api.js'
 
 
 
     export default {
         name: "Home",
-        components: {
-          swipe, TabBar, HotGoods
+      data(){
+        return {
+          loading: false,
+          bannerList: [],
+          goodsList: [],
+          pageNum: 1,
+          pageSize: 6,
+          allLoaded: false
+        }
+      },
+      methods: {
+        getBannerList(){
+          this.$http.get( url.bannerLists).then( res => {
+            this.bannerList = res.data.lists
+          })
+        },
+        getGoods(){
+          console.log(1)
+          if(this.allLoaded) return
+          this.$http.get( url.hotLists, {
+            pageNum: this.pageNum,
+            pageSize: this.pageSize
+          }).then( res => {
+            if( res.data.lists.length < this.pageSize ) {
+              this.allLoaded = true
+            }
+            if(this.goodsList.length) {
+              this.goodsList = this.goodsList.concat(res.data.lists)
+            }else {
+              this.goodsList = res.data.lists
+            }
+            this.pageNum ++
+            this.loading = false
+          })
+        },
+      },
+      created(){
+        this.getBannerList()
+        this.getGoods()
+      },
+      components: {
+        swipe, TabBar, HotGoods
       }
     }
 </script>
