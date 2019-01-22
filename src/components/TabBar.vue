@@ -11,11 +11,11 @@
       <img slot="icon" src="../assets/img/category.png" v-else>
       分类
     </mt-tab-item>
-    <mt-tab-item id="cart">
+    <mt-tab-item id="cart" @click.native="changeNav">
       <img slot="icon" src="../assets/img/cart.png">
       购物车
     </mt-tab-item>
-    <mt-tab-item id="tuser">
+    <mt-tab-item id="user" @click.native="changeNav">
       <img slot="icon" src="../assets/img/user.png">
       我
     </mt-tab-item>
@@ -39,14 +39,15 @@
           }
       },
       methods: {
-          changeNav() {
-            this.$router.push({
-              name: this.selected,
-              query: {
-                tabName: this.selected
-              }
-            })
-          }
+        changeNav() {
+          console.log(this.selected);
+          this.$router.push({
+            name: this.selected,
+            query: {
+              tabName: this.selected
+            }
+          })
+        }
       },
       created(){
         if(this.$route.query.tabName) {
