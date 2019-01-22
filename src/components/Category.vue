@@ -121,7 +121,8 @@
                 <li class="category-item js-category-item"
                     v-for="(category,index) in sublist.categoryList" :key="index"
                     :data-item-id="category.id"
-                    :data-item-name="category.name">
+                    :data-item-name="category.name"
+                    @click="toSearchList(category)">
                   <img :src="category.img" alt="生鲜" class="category-img">
                   <span class="category-item-name">
                 {{category.name}}           </span>
@@ -172,8 +173,16 @@
         },
         getRanklist(){
           this.$http.get(url.rank).then(res => {
-            console.log(res)
             this.ranklist = res.data.data
+          })
+        },
+        toSearchList(category) {
+          this.$router.push({
+            name:'search',
+            query: {
+              id: category.id,
+              keyword: category.name
+            }
           })
         }
       },

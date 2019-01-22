@@ -93,9 +93,6 @@
         },
         changeNum(num) {
           if(this.skuNum === 1 && num < 0) return
-          if(this.skuNum <0) {
-            console.log('xxxx')
-          }
           this.skuNum += num
         }
       },

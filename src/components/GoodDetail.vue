@@ -238,9 +238,10 @@
     },
     created(){
       this.goodsId = this.$route.query.id
-      console.log("id",this.goodsId)
       this.getData()
       this.getDealList()
+      window.scrollTo(0,0)
+
     },
     components: {
       Swipe,ChooseSku

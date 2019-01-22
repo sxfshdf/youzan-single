@@ -4,7 +4,7 @@ import Router from 'vue-router'
 import Home from '../components/Home.vue'
 import Category from '../components/Category.vue'
 import GoodDetail from '../components/GoodDetail.vue'
-import ChooseSku from '../components/ChooseSku.vue'
+import Search from '../components/Search.vue'
 
 
 Vue.use(Router)
@@ -23,6 +23,10 @@ export default new Router({
       path: '/detail',
       name: 'detail',
       component: GoodDetail
+    },{
+    path: '/search',
+      name: 'search',
+      component: Search
     }
   ]
 })

@@ -76,7 +76,6 @@
           })
         },
         getGoods(){
-          console.log(1)
           if(this.allLoaded) return
           this.$http.get( url.hotLists, {
             pageNum: this.pageNum,
