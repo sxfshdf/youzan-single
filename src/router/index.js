@@ -6,6 +6,9 @@ import Category from '../components/Category.vue'
 import GoodDetail from '../components/GoodDetail.vue'
 import Search from '../components/Search.vue'
 import Cart from '../components/Cart.vue'
+import User from '../components/User.vue'
+import All from '../components/All.vue'
+import AddressDetail from '../components/AddressDetail.vue'
 
 
 Vue.use(Router)
@@ -32,6 +35,18 @@ export default new Router({
       path: '/cart',
       name: 'cart',
       component: Cart
+    },{
+      path: '/user',
+      name: 'user',
+      component: User,
+    },{
+      path: '/all',
+      name: 'all',
+      component: All
+    },{
+      path: '/address',
+      name: 'address',
+      component: AddressDetail
     }
   ]
 })

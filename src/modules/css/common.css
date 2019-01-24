@@ -90,6 +90,9 @@ video {
 html {
   line-height: 1
 }
+html, body{
+  height: 100%;
+}
 
 ol,
 ul {
@@ -875,4 +878,3 @@ html {
   font-family: Helvetica, STHeiti STXihei, Microsoft YaHei, Tohoma, Arial
 }
 
- 

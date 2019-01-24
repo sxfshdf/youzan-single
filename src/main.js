@@ -10,6 +10,7 @@ Vue.prototype.$http = Axios
 Vue.config.productionTip = false
 
 import  './modules/css/my-mint.css'
+import store from './vuex/index.js'
 
 
 
@@ -44,6 +45,7 @@ Vue.filter('formatPrice',(price) => {
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>',
 })
