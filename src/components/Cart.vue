@@ -1,12 +1,16 @@
 <template>
 
   <div class="container " style="min-height: 581px;">
+    <div class="cart-empty" v-show="!(cartData && cartData.length)">
+      <h2>购物车快饿瘪了T.T</h2>
+      <div class="desc">快给我挑点宝贝</div>
+      <div class="go-homepage-btn">
+        <a href="index.html">去逛逛</a>
+      </div>
+    </div>
     <div class="content clearfix js-page-content cart-content">
       <div id="cart-container">
         <div>
-          <!---->
-          <!---->
-          <!---->
           <div class="js-shop-list shop-list">
             <div class="block block-order block-cart" v-for="(shop,shopIndex) in cartData">
               <div class="header">
@@ -347,7 +351,7 @@
         },
         touchEnd(e,shopIndex,good,goodIndex) {
           let currentRef = `good-${shopIndex}-${goodIndex}`
-          
+
           if(this.refTouchMove && this.refTouchMove !== currentRef) {
             Velocity(this.$refs[`${this.refTouchMove}`],{left: '0px'})
           }

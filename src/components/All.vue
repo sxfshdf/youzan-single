@@ -1,6 +1,11 @@
 <template>
   <div class="allAddress">
-    <div class="container " style="min-height: 597px;">
+    <div class="empty-list" v-if="!(lists && lists.length)">
+      <h2>未添加任何地址T.T</h2>
+      <div class="desc">快去添加吧</div>
+      <div class="go-homepage-btn" @click="addAddr"><a>添加地址</a></div>
+    </div>
+    <div class="container " style="min-height: 597px;" v-else>
       <div class="block-list address-list section section-first js-no-webview-block">
         <a class="block-item js-address-item address-item "
            v-for="(list,index) in lists" :key="index"
@@ -27,6 +32,13 @@
       lists() {
         return this.$store.state.lists
       }
+    //   empty() {
+    //     if(this.lists && this.lists.length) {
+    //       return true
+    //     }else {
+    //       return false
+    //     }
+    //   }
     },
     methods: {
       toDetail(address) {
