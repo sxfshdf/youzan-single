@@ -31,7 +31,10 @@
                 <ul class="js-list block block-list block-list-cart border-0">
                   <li class="block-item block-item-cart"
                       :class="{editing: shop.editing}"
-                      v-for="(good,goodIndex) in shop.goodsList">
+                      v-for="(good,goodIndex) in shop.goodsList"
+                      :ref="'good-'+shopIndex+'-'+goodIndex"
+                      @touchstart="touchStart($event,good)"
+                      @touchend="touchEnd($event,shopIndex,good,goodIndex)">
                     <div>
                       <div class="check-container" @click="selectGood(good,shop)" v-show="!editingShop">
                         <span class="check" :class="{checked: good.checked}" >
@@ -142,6 +145,7 @@
 
 <script>
   import url from '../modules/js/api.js'
+  import Velocity from 'velocity-animate'
     export default {
       name: "Cart",
       data() {
@@ -153,7 +157,8 @@
           isAdding: false,
           showPop: false,
           removeData: null,
-          removeMsg: ''
+          removeMsg: '',
+          refTouchMove: ''
         }
       },
       computed:{
@@ -336,6 +341,28 @@
         },
         cancelRemove() {
           this.showPop = false
+        },
+        touchStart(e,good) {
+          good.startX = e.changedTouches[0].clientX
+        },
+        touchEnd(e,shopIndex,good,goodIndex) {
+          let currentRef = `good-${shopIndex}-${goodIndex}`
+          
+          if(this.refTouchMove && this.refTouchMove !== currentRef) {
+            Velocity(this.$refs[`${this.refTouchMove}`],{left: '0px'})
+          }
+
+          let endX = e.changedTouches[0].clientX
+          let left = 0
+          if(good.startX - endX > 0) {
+            left= "-60px"
+          }
+          // console.log(Velocity)
+          if(!this.editingShop) {
+            Velocity(this.$refs[`${currentRef}`],{left})
+          }
+          // this.refTouchMove = `good-${shopIndex}-${goodIndex}`
+          this.refTouchMove = currentRef
         }
       },
       created() {
