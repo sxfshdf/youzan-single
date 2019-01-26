@@ -49,16 +49,16 @@
                         </span>
                       </div>
                       <div class="name-card clearfix">
-                        <a href="https://h5.youzan.com/v2/showcase/goods?alias=2oivacpjh2ex0" class="thumb js-goods-link">
+                        <router-link to="detail" class="thumb js-goods-link">
                           <img class="js-lazy" :src="good.img">
                           <!---->
-                        </a>
+                        </router-link>
                         <div class="detail">
-                          <a href="https://h5.youzan.com/v2/showcase/goods?alias=2oivacpjh2ex0" class="js-goods-link">
+                          <router-link to="detail" class="js-goods-link">
                             <h3 class="title js-ellipsis">
                               <i>{{good.title}}</i>
                             </h3>
-                          </a>
+                          </router-link>
                           <p class="sku ellipsis">
                             7-9钱，总重1600g 净虾800g
                           </p>

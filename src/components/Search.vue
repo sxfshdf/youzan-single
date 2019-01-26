@@ -2,7 +2,7 @@
   <div class="container with-top-search" style="min-height: 667px;">
     <div class="custom-search js-search-bar">
       <form>
-        <input type="search" class="custom-search-input" autocomplete="off" name="keyword" value="水果" placeholder="搜索更赞的商品" style="padding-left: 66px;">
+        <input type="search" class="custom-search-input" autocomplete="off" name="keyword" :value="keyword" placeholder="搜索更赞的商品" style="padding-left: 66px;">
         <span class="icon-custom-search"></span>
       </form>
       <button class="custom-search-type-selection-btn custom-search-type-selection-btn-focus">商品</button>
@@ -63,7 +63,8 @@
           id: '',
           keyword: '',
           lists: [],
-          showToTop: false
+          showToTop: false,
+          searchValue: ''
         }
       },
       methods:{

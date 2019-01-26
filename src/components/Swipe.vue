@@ -1,9 +1,9 @@
 <template>
   <mt-swipe :auto="3000" >
     <mt-swipe-item v-for="(list,index) in lists" :key = "index">
-      <a class="js-no-follow" :href="list.clickUrl">
+      <router-link class="js-no-follow" to="detail">
         <img class="goods-main-photo fadeIn" :src="list.img">
-      </a>
+      </router-link>
     </mt-swipe-item>
   </mt-swipe>
 </template>

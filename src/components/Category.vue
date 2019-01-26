@@ -51,7 +51,7 @@
                   </div>
                   <ul>
                     <li class="goods-item" v-for="(list,index) in ranklist.hotGoods" :key="index">
-                      <a href="#">
+                      <router-link to="detail">
                         <div class="thumb badge center-img">
                           <img :src="list.img">
                           <span class="num">{{index+1}}</span>
@@ -64,7 +64,7 @@
                             <span>{{list.recommend}}</span>
                           </div>
                         </div>
-                      </a>
+                      </router-link>
                     </li>
                   </ul>
                 </div>
@@ -96,7 +96,7 @@
                   </div>
                   <ul class="keywords-list">
                     <li v-for="(item,index) in ranklist.hotKeywords" :key="index">
-                      <a href="javascript:;" class="js-hot-keyword">{{item}}</a>
+                      <router-link :to="{name:'search',query:{keyword: item}}" class="js-hot-keyword">{{item}}</router-link>
                     </li>
                   </ul>
                 </div>
